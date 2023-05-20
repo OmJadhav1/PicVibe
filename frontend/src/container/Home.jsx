@@ -7,16 +7,14 @@ import { HiMenu } from "react-icons/hi";
 import { Link, Route, Routes } from "react-router-dom";
 import { userQuery } from "../utils/data";
 import { AiFillCloseCircle } from "react-icons/ai";
+import { fetchUser } from "../utils/fetchUser";
 
 const Home = () => {
   const [toggleSidebar, setToggleSidebar] = useState(false);
   const [user, setUser] = useState(null);
   const scrollRef = useRef(null);
 
-  const userInfo =
-    localStorage.getItem("user") !== "undefined"
-      ? JSON.parse(localStorage.getItem("user"))
-      : localStorage.clear();
+  const userInfo = fetchUser();
 
   useEffect(() => {
     const query = userQuery(userInfo?.sub);
@@ -46,7 +44,7 @@ const Home = () => {
             <img src={logo} alt="logo" className="w-28" />
           </Link>
           <Link to={`user-profile/${user?._id}`}>
-            <img src={userInfo?.picture} alt="logo" className="w-28" />
+            <img src={userInfo?.picture} alt="logo" className=" w-24" />
           </Link>
         </div>
         {toggleSidebar && (
