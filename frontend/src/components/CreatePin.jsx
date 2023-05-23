@@ -25,7 +25,6 @@ const CreatePin = ({ user }) => {
       type === "image/png" ||
       type === "image/svg" ||
       type === "image/jpeg" ||
-      type === "image/gif" ||
       type === "image/webp"
     ) {
       setWrongImageType(false);
@@ -107,7 +106,7 @@ const CreatePin = ({ user }) => {
                     <p className="text-lg">Click to upload</p>
                   </div>
                   <p className="mt-32 text-gray-400">
-                    Use high-quality JPG, SVG,PNG,GIF,WEBp less than 20MB
+                    Use high-quality JPG,SVG,PNG,WEBp less than 20MB
                   </p>
                 </div>
                 <input

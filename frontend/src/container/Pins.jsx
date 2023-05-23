@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Navbar, Feed, PinDetail, CreatePin, Search } from "../components";
+import { Navbar, Feed, PinDetail, CreatePin, Search, Footer } from "../components";
 import { Route, Routes } from "react-router-dom";
 
 const Pins = ({ user }) => {
@@ -30,6 +30,7 @@ const Pins = ({ user }) => {
             set
           />
         </Routes>
+        <Footer/>
       </div>
     </div>
   );

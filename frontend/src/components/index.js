@@ -6,3 +6,4 @@ export { default as CreatePin } from "./CreatePin";
 export { default as Navbar } from "./Navbar";
 export { default as PinDetail } from "./pinDetail";
 export { default as Search } from "./Search";
+export { default as Footer } from "./Footer";

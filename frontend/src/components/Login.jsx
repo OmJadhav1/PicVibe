@@ -48,7 +48,7 @@ const Login = () => {
             <img src={logo} width="130px" alt="logo" />
           </div>
           <div className="shadow-2x1">
-            <GoogleLogin onSuccess={onSuccess} onError={onError} />
+            <GoogleLogin onSuccess={onSuccess} onError={onError} cookiePolicy="single_host_origin"/>
           </div>
         </div>
       </div>
