@@ -8,11 +8,22 @@ const Search = ({searchTerm}) => {
   const [pins, setPins] = useState(null)
   const [loading, setLoading] = useState(false)
 
+  const sanitizeInput = (input) => {
+    return input.replace(/[^a-zA-Z0-9\s]/g, '');
+  };
+
+  const cleanInput = (input) => {
+    return input.trim(); // Trim leading and trailing white spaces
+  };
+  let cleanSearchTerm = '';
   useEffect(() => {
-    if(searchTerm !== ''){
+    const sanitizedSearchTerm = sanitizeInput(searchTerm);
+    cleanSearchTerm = cleanInput(sanitizedSearchTerm)
+
+    if(cleanSearchTerm !== ''){
       setLoading(true)
 
-      const query = searchQuery(searchTerm.toLowerCase())
+      const query = searchQuery(cleanSearchTerm.toLowerCase());
 
       client.fetch(query)
         .then((data) => {
@@ -31,7 +42,7 @@ const Search = ({searchTerm}) => {
   return <div>
     {loading && <Spinner message="Searching Pins..." />}
     {pins?.length !== 0 && <MasonryLayout pins={pins}/>}
-    {pins?.length === 0 && searchTerm !== '' && !loading && (
+    {pins?.length === 0 &&  !loading && (
       <div className="mt-10 text-center text-xl">No Pins Found!</div>
     )}
   </div>;
